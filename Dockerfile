@@ -10,6 +10,6 @@ COPY requirements.txt .
 # Instala las dependencias del proyecto
 RUN pip install -r requirements.txt
 
-EXPOSE 9000
+EXPOSE 5000
 
 CMD ["python", "hola_mundo.py"]
