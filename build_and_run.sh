@@ -10,4 +10,4 @@ fi
 docker build -t hola-mundo .
 
 # Ejecuta el contenedor a partir de la imagen construida en el puerto 9000
-docker run -d -p 9000:5000 --name hola-mundo-container hola-mundo
+docker run -d -p 5000:5000 --name hola-mundo-container hola-mundo
