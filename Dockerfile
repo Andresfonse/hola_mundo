@@ -1,10 +1,13 @@
+# Dockerfile
 FROM python:3.9
 
 WORKDIR /app
 
-# Copiar el script Python y el archivo HTML al directorio de trabajo del contenedor
-COPY hola_mundo.py .
-COPY hola_mundo.html .
+# Instalación de git
+RUN apt-get update && apt-get install -y git
 
-# Comando para ejecutar el script Python y servir el archivo HTML
+# Clonar el repositorio desde GitHub
+RUN git clone https://github.com/Andresfonse/hola_mundo.git .
+
+# Comando para ejecutar la aplicación
 CMD ["python", "hola_mundo.py"]
