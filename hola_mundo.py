@@ -1,18 +1,19 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+# hola_mundo.py
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
-class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
-    def end_headers(self):
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
         self.send_header('Content-type', 'text/html')
-        self.send_header('Access-Control-Allow-Origin', '*')
-        SimpleHTTPRequestHandler.end_headers(self)
+        self.end_headers()
+        self.wfile.write(b"<html><head><title>Hola Mundo</title></head>")
+        self.wfile.write(b"<body><h1>¡Hola, mundo!</h1></body></html>")
 
-# Cambia el directorio raíz del servidor HTTP al directorio donde se encuentra el archivo HTML
-SimpleHTTPRequestHandler.extensions_map.update({
-    '.html': 'text/html',
-})
+def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=5656):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f"Servidor HTTP activo en el puerto {port}")
+    httpd.serve_forever()
 
-# Ejecuta el servidor HTTP en el puerto 80
-server_address = ('', 80)
-httpd = HTTPServer(server_address, MyHTTPRequestHandler)
-print('Servidor HTTP activo...')
-httpd.serve_forever()
+if __name__ == "__main__":
+    run()
