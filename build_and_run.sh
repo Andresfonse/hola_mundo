@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Verifica si el contenedor Docker ya existe y lo elimina si es así
-if [ "$(docker ps -q -f name=hola-mundo-container)" ]; then
-    docker stop hola-mundo-container
-    docker rm hola-mundo-container
-fi
+# Clonar el repositorio desde GitHub
+git clone https://github.com/tu_usuario/tu_repositorio.git /ruta/a/tu/proyecto
 
-# Construye la imagen Docker
-docker build -t hola-mundo .
+# Navegar al directorio del proyecto
+cd /ruta/a/tu/proyecto
 
-# Ejecuta el contenedor a partir de la imagen construida en el puerto 9000
-docker run -d -p 5000:5000 --name hola-mundo-container hola-mundo
+# Construir la imagen Docker
+docker build -t tilinrunning .
+
+# Ejecutar el contenedor Docker
+docker run -d -p 8080:8080 tilinrunning
