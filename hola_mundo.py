@@ -1,18 +1,18 @@
-import http.server
-import socketserver
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
-class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        # Establece la respuesta HTTP 200 (OK)
         self.send_response(200)
-        # Establece las cabeceras de la respuesta
         self.send_header('Content-type', 'text/html')
         self.end_headers()
-        # Escribe el contenido de la respuesta
-        self.wfile.write(b"¡Hola Mundo desde Python!")
+        self.wfile.write(b"<html><head><title>Hola Mundo</title></head>")
+        self.wfile.write(b"<body><h1>¡Hola, mundo!</h1></body></html>")
 
-# Configura el servidor para que escuche en el puerto especificado
-with socketserver.TCPServer(("", 9000), MyHttpRequestHandler) as httpd:
-    print("Servidor activo en el puerto 9000...")
-    # Ejecuta el servidor hasta que se interrumpa con Ctrl+C
+def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8080):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f"Servidor HTTP activo en el puerto {port}")
     httpd.serve_forever()
+
+if __name__ == "__main__":
+    run()
