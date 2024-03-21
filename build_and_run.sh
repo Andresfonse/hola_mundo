@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Clonar el repositorio desde GitHub
-git clone https://github.com/tu_usuario/tu_repositorio.git /ruta/a/tu/proyecto
+git clone https://github.com/Andresfonse/hola_mundo.git
 
 # Navegar al directorio del proyecto
-cd /ruta/a/tu/proyecto
+cd /
 
 # Construir la imagen Docker
 docker build -t tilinrunning .
