@@ -1,18 +1,18 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
+# hola_mundo.py
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
-        self.wfile.write(b"<html><head><title>Hola Mundo</title></head>")
-        self.wfile.write(b"<body><h1>¡Hola, mundo!</h1></body></html>")
-
-def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=6556):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print(f"Servidor HTTP activo en el puerto {port}")
-    httpd.serve_forever()
+def generate_html():
+    html_content = """
+    <html>
+    <head>
+        <title>Hola Mundo</title>
+    </head>
+    <body>
+        <h1>¡Hola, mundo!</h1>
+    </body>
+    </html>
+    """
+    with open('/var/www/html/hola_mundo.html', 'w') as f:
+        f.write(html_content)
 
 if __name__ == "__main__":
-    run()
+    generate_html()
