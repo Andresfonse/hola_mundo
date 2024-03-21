@@ -8,7 +8,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(b"<html><head><title>Hola Mundo</title></head>")
         self.wfile.write(b"<body><h1>¡Hola, mundo!</h1></body></html>")
 
-def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=7777):
+def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=6556):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f"Servidor HTTP activo en el puerto {port}")
