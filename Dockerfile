@@ -1,15 +1,13 @@
-FROM python:3.9-slim
+FROM python:3.9
 
 WORKDIR /app
 
-COPY hola_mundo.py .
+# Instalación de git
+RUN apt-get update && apt-get install -y git
 
-# Copia el archivo requirements.txt al directorio de trabajo
-COPY requirements.txt .
+# Clonar el repositorio desde GitHub
+RUN git clone https://github.com/tu_usuario/tu_repositorio.git .
 
-# Instala las dependencias del proyecto
-RUN pip install -r requirements.txt
 
-EXPOSE 5000
-
+# Comando para ejecutar la aplicación
 CMD ["python", "hola_mundo.py"]
