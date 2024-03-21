@@ -6,7 +6,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y git
 
 # Clonar el repositorio desde GitHub
-RUN git clone https://github.com/tu_usuario/tu_repositorio.git .
+RUN git clone https://github.com/Andresfonse/hola_mundo.git .
 
 
 # Comando para ejecutar la aplicación
