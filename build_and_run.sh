@@ -10,4 +10,4 @@ cd /
 docker build -t tilinrunning .
 
 # Ejecutar el contenedor Docker
-docker run -d -p 8080:8080 tilinrunning
+docker run -d -p 6336:6336 tilinrunning
