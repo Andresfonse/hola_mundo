@@ -1,13 +1,13 @@
 # Dockerfile
+FROM python:3.9
 
-# Utiliza la imagen base de Python
-FROM python:3.9-slim
-
-# Establece el directorio de trabajo en /app
 WORKDIR /app
 
-# Copia el archivo hola_mundo.py al directorio de trabajo en el contenedor
-COPY hola_mundo.py .
+# Instalación de git
+RUN apt-get update && apt-get install -y git
 
-# Ejecuta el script hola_mundo.py cuando el contenedor se inicie
+# Clonar el repositorio desde GitHub
+RUN git clone https://github.com/Andresfonse/hola_mundo.git .
+
+# Comando para ejecutar la aplicación
 CMD ["python", "hola_mundo.py"]
