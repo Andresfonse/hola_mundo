@@ -7,8 +7,5 @@ WORKDIR /app
 # Copia el archivo hola_mundo.py al directorio de trabajo en el contenedor
 COPY hola_mundo.py /app
 
-# Ejecutar el archivo hola_mundo.py al construir la imagen
-RUN chmod +x /app/build_and_run.sh && /app/build_and_run.sh
-
 # Ejecuta el script cuando se inicie el contenedor
 CMD ["python", "hola_mundo.py"]
