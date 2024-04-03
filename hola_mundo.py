@@ -7,7 +7,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
         html="""
-        <h2>kjkjjkjjkj</h2>
+        <h2>hola</h2>
         """
         self.wfile.write(html.encode('utf-8'))
 
